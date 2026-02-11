@@ -1,67 +1,196 @@
-// --- MOVING NO BUTTON ---
-const noBtn = document.getElementById("noBtn");
-const noTexts = [
-    "Are you sure? 🥺", 
-    "Think about the snacks! 🍕", 
-    "Don't break my heart! 💔", 
-    "I'll do the dishes! 🧼", 
-    "Pleaseeeee? 🥺", 
-    "You can't catch me! 🏃"
-];
-let textIndex = 0;
+/* Import a cute, rounded font */
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&display=swap');
 
-function moveButton() {
-    if (!noBtn) return; // Stop if button doesn't exist on this page
-
-    const maxWidth = window.innerWidth - noBtn.offsetWidth - 20;
-    const maxHeight = window.innerHeight - noBtn.offsetHeight - 20;
-
-    const randomX = Math.max(20, Math.floor(Math.random() * maxWidth));
-    const randomY = Math.max(20, Math.floor(Math.random() * maxHeight));
-
-    noBtn.style.position = "fixed";
-    noBtn.style.left = randomX + "px";
-    noBtn.style.top = randomY + "px";
-    
-    // Style changes
-    noBtn.style.backgroundColor = "red";
-    noBtn.style.color = "white";
-    noBtn.style.zIndex = "1000";
-    
-    noBtn.innerText = noTexts[textIndex];
-    textIndex = (textIndex + 1) % noTexts.length;
+body {
+    font-family: 'Fredoka', sans-serif;
+    background-color: #ffe6e6;
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden; /* Prevents scrollbars when button moves */
+    text-align: center;
 }
 
-// --- MUSIC PLAYER ---
-const music = document.getElementById("bgMusic");
-function toggleMusic() {
-    if (music.paused) {
-        music.play();
-        alert("Playing our song! 🎶");
-    } else {
-        music.pause();
-    }
+/* Floating Hearts Background Animation */
+body::before {
+    content: "❤️ 💖 💘 💝 💓";
+    position: fixed;
+    top: -50px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    font-size: 2rem;
+    opacity: 0.1;
+    z-index: -1;
+    animation: floatBackground 20s linear infinite;
 }
 
-// --- RELATIONSHIP TIMER ---
-// CHANGE THIS DATE to your actual anniversary (YYYY-MM-DD)
-const startDate = new Date("2024-01-01"); 
-
-function updateTimer() {
-    const timerDiv = document.getElementById("timer");
-    if (!timerDiv) return; // Stop if timer doesn't exist on this page
-
-    const now = new Date();
-    const diff = now - startDate;
-
-    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-    const minutes = Math.floor((diff / 1000 / 60) % 60);
-    const seconds = Math.floor((diff / 1000) % 60);
-
-    timerDiv.innerText = `Been loving you for: ${days} days, ${hours} hours, ${minutes} mins, ${seconds} secs ❤️`;
+@keyframes floatBackground {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(50px); }
+    100% { transform: translateY(0); }
 }
 
-// Update timer every second
-setInterval(updateTimer, 1000);
-updateTimer();
+.container {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 2rem;
+    border-radius: 25px;
+    box-shadow: 0 10px 30px rgba(255, 77, 77, 0.2);
+    width: 90%;
+    max-width: 500px;
+    border: 4px solid #fff;
+    position: relative;
+    z-index: 10;
+}
+
+h1 {
+    color: #ff4d4d;
+    margin-bottom: 10px;
+    font-size: 2.2rem;
+}
+
+p {
+    color: #555;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+/* Buttons */
+.btn-container {
+    margin-top: 20px;
+    min-height: 60px; /* Keeps layout stable */
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+button {
+    font-family: 'Fredoka', sans-serif;
+    font-size: 1.2rem;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.yes-btn, .nav-btn {
+    background-color: #ff4d4d;
+    color: white;
+}
+
+.yes-btn:hover, .nav-btn:hover {
+    transform: scale(1.05);
+    background-color: #ff3333;
+    box-shadow: 0 6px 12px rgba(255, 51, 51, 0.3);
+}
+
+#noBtn {
+    background-color: #e0e0e0;
+    color: #444;
+    position: relative; /* Starts relative, becomes fixed when moving */
+}
+
+/* Gallery Styles */
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.polaroid {
+    background: white;
+    padding: 10px 10px 35px 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    transform: rotate(-3deg);
+    transition: transform 0.3s;
+    width: 130px;
+}
+
+.polaroid:nth-child(even) { transform: rotate(3deg); }
+.polaroid:hover { transform: scale(1.1) rotate(0deg); z-index: 5; }
+
+.polaroid img {
+    width: 100%;
+    border-radius: 4px;
+}
+
+.caption {
+    margin-top: 8px;
+    font-size: 0.8rem;
+    color: #777;
+    font-weight: bold;
+}
+
+/* Lists & Checkboxes */
+.list-group {
+    text-align: left;
+    list-style: none;
+    padding: 0;
+}
+
+.list-group li, .checklist label {
+    background: #fff0f0;
+    margin: 8px 0;
+    padding: 12px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+}
+
+.checklist label { cursor: pointer; }
+.checklist input { margin-right: 12px; transform: scale(1.3); accent-color: #ff4d4d; }
+
+/* Coupons */
+.coupon-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.coupon {
+    border: 2px dashed #ffb3b3;
+    background: #fff;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.coupon:hover { background-color: #fff5f5; border-color: #ff4d4d; }
+.coupon h3 { font-size: 1rem; margin: 0 0 5px 0; color: #d63031; }
+.coupon p { font-size: 0.8rem; margin: 0; color: #888; }
+
+/* Input Fields */
+input[type="text"] {
+    width: 80%;
+    padding: 10px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-family: inherit;
+    margin: 10px 0;
+}
+
+/* Music Button */
+.music-control {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: white;
+    padding: 10px 15px;
+    border-radius: 50px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    cursor: pointer;
+    font-size: 0.9rem;
+    z-index: 100;
+    border: 2px solid #ff4d4d;
+    color: #ff4d4d;
+    font-weight: bold;
+}
