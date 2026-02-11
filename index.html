@@ -14,11 +14,19 @@
         <h1>Will you be my Valentine? 🌹</h1>
         <p>I promise to buy you food and handle the spiders.</p>
         
+        <div id="timer"></div>
+        
         <div class="btn-container">
             <button id="yesBtn" onclick="location.href='pages/quiz.html'">YES! 😍</button>
             <button id="noBtn" onmouseover="moveButton()" onclick="moveButton()">No 😢</button>
         </div>
     </div>
+
+    <audio id="bgMusic" loop>
+        <source src="images/song.mp3" type="audio/mpeg">
+    </audio>
+    <button class="music-btn" onclick="toggleMusic()">🎵 Play Music</button>
+
     <script src="js/script.js"></script>
 </body>
 </html>
