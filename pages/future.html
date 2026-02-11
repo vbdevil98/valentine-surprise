@@ -5,30 +5,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our Future</title>
     <link rel="stylesheet" href="../css/style.css">
+    <style>
+        input[type="text"] {
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            width: 70%;
+            margin-top: 10px;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
-        <h1>Future Date Ideas 📅</h1>
-        <p>Check the ones you want to do this year!</p>
+        <h1>Official Valentine's Contract 📜</h1>
+        <p>By checking these boxes, you agree to the following terms:</p>
         
         <div class="checklist">
-            <label><input type="checkbox"> A picnic in the park 🧺</label>
-            <label><input type="checkbox"> Late night drive 🚗</label>
-            <label><input type="checkbox"> Cooking class together 🍝</label>
-            <label><input type="checkbox"> Movie marathon weekend 🎬</label>
-            <label><input type="checkbox"> Stargazing trip ✨</label>
+            <label><input type="checkbox" checked> I will give you at least 3 hugs a day.</label>
+            <label><input type="checkbox" checked> I will let you pick the movie (sometimes).</label>
+            <label><input type="checkbox"> We will go on a picnic this month.</label>
+            <label><input type="checkbox"> We will bake cookies together.</label>
+            <label><input type="checkbox"> I admit you are the cuter one.</label>
         </div>
 
-        <button onclick="alert('Yay! I can\'t wait! Happy Valentine\'s Day! ❤️')" class="final-btn">Send to Me! 💌</button>
+        <p><strong>Sign here to validate:</strong></p>
+        <input type="text" id="signature" placeholder="Type your name...">
         <br>
-        <a href="../index.html" style="text-decoration: none; color: #ff4d4d; font-size: 0.9rem;">Start Over</a>
+
+        <button onclick="finish()" class="final-btn">Seal the Deal! 💋</button>
+        <br>
+        <a href="../index.html" style="text-decoration: none; color: #ff4d4d; font-size: 0.9rem; margin-top:20px; display:block;">Start Over</a>
     </div>
     
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <script>
-        window.onload = function() {
-            confetti({ particleCount: 150, spread: 70, origin: { y: 0.6 } });
-        };
+        function finish() {
+            var name = document.getElementById("signature").value;
+            if(name.trim() === "") {
+                alert("Please sign the contract first! 🖋️");
+            } else {
+                alert("Contract Signed! ❤️ I love you, " + name + "!");
+                confetti({ particleCount: 200, spread: 70, origin: { y: 0.6 } });
+            }
+        }
     </script>
 </body>
 </html>
