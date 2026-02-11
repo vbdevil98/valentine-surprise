@@ -3,27 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wait a minute...</title>
+    <title>Security Check</title>
     <link rel="stylesheet" href="../css/style.css">
     <style>
-        .wrong { background-color: #ffcccc; animation: shake 0.5s; }
-        @keyframes shake {
-            0% { transform: translateX(0); }
-            25% { transform: translateX(-10px); }
-            50% { transform: translateX(10px); }
-            75% { transform: translateX(-10px); }
-            100% { transform: translateX(0); }
-        }
+        .quiz-btn { width: 100%; margin: 5px 0; }
+        .shake { animation: shake 0.5s; }
+        @keyframes shake { 0% { transform: translateX(0); } 25% { transform: translateX(-10px); } 75% { transform: translateX(10px); } 100% { transform: translateX(0); } }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Wait! Security Check 👮‍♂️</h1>
-        <p>Who is the most handsome boyfriend?</p>
-        
-        <button onclick="alert('Wrong! Try again 😈'); this.classList.add('wrong');">Ryan Reynolds</button>
-        <button onclick="location.href='reasons.html'">YOU Are! (Correct ✅)</button>
-        <button onclick="alert('Wrong! Try again 😈'); this.classList.add('wrong');">Someone else</button>
+        <p>Before we proceed, who is the most handsome boyfriend?</p>
+
+        <button class="quiz-btn" onclick="checkQuiz(false, this)">Ryan Reynolds</button>
+        <button class="quiz-btn" onclick="checkQuiz(true, this)">YOU Are! (Obviously) ❤️</button>
+        <button class="quiz-btn" onclick="checkQuiz(false, this)">Someone else</button>
     </div>
+    <script src="../js/script.js"></script>
 </body>
 </html>
