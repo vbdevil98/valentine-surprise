@@ -3,43 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Future</title>
+    <title>The Contract</title>
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
     <div class="container">
-        <h1>Official Valentine's Contract 📜</h1>
-        <p>By checking these boxes, you agree to the following terms:</p>
-        
+        <h1>Valentine's Contract 📜</h1>
+        <p>By signing, you agree to the following terms:</p>
+
         <div class="checklist">
-            <label><input type="checkbox" checked> I will give you at least 3 hugs a day.</label>
-            <label><input type="checkbox" checked> I will let you pick the movie (sometimes).</label>
-            <label><input type="checkbox"> We will go on a picnic this month.</label>
-            <label><input type="checkbox"> We will bake cookies together.</label>
-            <label><input type="checkbox"> I admit you are the cuter one.</label>
+            <label><input type="checkbox" checked> Receive unlimited hugs.</label>
+            <label><input type="checkbox" checked> Let me buy you food.</label>
+            <label><input type="checkbox"> Go on a picnic soon.</label>
+            <label><input type="checkbox"> Watch a movie of my choice.</label>
+            <label><input type="checkbox"> Admit I love you more.</label>
         </div>
 
-        <p><strong>Sign here to validate:</strong></p>
+        <p><strong>Sign Here:</strong></p>
         <input type="text" id="signature" placeholder="Type your name...">
-        <br>
-
-        <button onclick="finish()" class="final-btn">Seal the Deal! 💋</button>
         
-        <br>
-        <button onclick="location.href='coupons.html'" class="next-btn" style="background-color: #ff8fab;">Bonus: Your Gifts! 🎁</button>
+        <div class="btn-container">
+            <button class="nav-btn" onclick="signContract()">Seal the Deal 💋</button>
+        </div>
     </div>
     
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-    <script>
-        function finish() {
-            var name = document.getElementById("signature").value;
-            if(name.trim() === "") {
-                alert("Please sign the contract first! 🖋️");
-            } else {
-                alert("Contract Signed! ❤️ I love you, " + name + "!");
-                confetti({ particleCount: 200, spread: 70, origin: { y: 0.6 } });
-            }
-        }
-    </script>
+    <script src="../js/script.js"></script>
 </body>
 </html>
