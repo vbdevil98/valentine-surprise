@@ -1,40 +1,67 @@
-body {
-    font-family: 'Comic Sans MS', 'Chalkboard SE', sans-serif;
-    background-color: #ffe6e6;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    margin: 0;
-    text-align: center;
+// --- MOVING NO BUTTON ---
+const noBtn = document.getElementById("noBtn");
+const noTexts = [
+    "Are you sure? 🥺", 
+    "Think about the snacks! 🍕", 
+    "Don't break my heart! 💔", 
+    "I'll do the dishes! 🧼", 
+    "Pleaseeeee? 🥺", 
+    "You can't catch me! 🏃"
+];
+let textIndex = 0;
+
+function moveButton() {
+    if (!noBtn) return; // Stop if button doesn't exist on this page
+
+    const maxWidth = window.innerWidth - noBtn.offsetWidth - 20;
+    const maxHeight = window.innerHeight - noBtn.offsetHeight - 20;
+
+    const randomX = Math.max(20, Math.floor(Math.random() * maxWidth));
+    const randomY = Math.max(20, Math.floor(Math.random() * maxHeight));
+
+    noBtn.style.position = "fixed";
+    noBtn.style.left = randomX + "px";
+    noBtn.style.top = randomY + "px";
+    
+    // Style changes
+    noBtn.style.backgroundColor = "red";
+    noBtn.style.color = "white";
+    noBtn.style.zIndex = "1000";
+    
+    noBtn.innerText = noTexts[textIndex];
+    textIndex = (textIndex + 1) % noTexts.length;
 }
-.container {
-    background: white;
-    padding: 30px;
-    border-radius: 20px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-    max-width: 600px;
-    width: 90%;
+
+// --- MUSIC PLAYER ---
+const music = document.getElementById("bgMusic");
+function toggleMusic() {
+    if (music.paused) {
+        music.play();
+        alert("Playing our song! 🎶");
+    } else {
+        music.pause();
+    }
 }
-h1 { color: #ff4d4d; }
-p { color: #666; font-size: 1.2rem; }
-button {
-    font-size: 1.2rem;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 50px;
-    cursor: pointer;
-    margin: 10px;
-    transition: transform 0.2s;
+
+// --- RELATIONSHIP TIMER ---
+// CHANGE THIS DATE to your actual anniversary (YYYY-MM-DD)
+const startDate = new Date("2024-01-01"); 
+
+function updateTimer() {
+    const timerDiv = document.getElementById("timer");
+    if (!timerDiv) return; // Stop if timer doesn't exist on this page
+
+    const now = new Date();
+    const diff = now - startDate;
+
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    const minutes = Math.floor((diff / 1000 / 60) % 60);
+    const seconds = Math.floor((diff / 1000) % 60);
+
+    timerDiv.innerText = `Been loving you for: ${days} days, ${hours} hours, ${minutes} mins, ${seconds} secs ❤️`;
 }
-#yesBtn, .next-btn, .final-btn { background-color: #ff4d4d; color: white; }
-#yesBtn:hover, .next-btn:hover, .final-btn:hover { transform: scale(1.05); background-color: #ff3333; }
-#noBtn { background-color: #e0e0e0; position: absolute; }
-.reasons-list { text-align: left; list-style: none; padding: 0; }
-.reasons-list li { padding: 10px; border-bottom: 1px solid #eee; font-size: 1.1rem; }
-.gallery { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; }
-.polaroid { background: white; padding: 10px 10px 30px 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.2); transform: rotate(-2deg); }
-.polaroid img { max-width: 150px; border-radius: 5px; }
-.checklist { text-align: left; display: flex; flex-direction: column; gap: 10px; margin: 20px 0; }
-.checklist label { font-size: 1.2rem; cursor: pointer; background: #fff0f0; padding: 10px; border-radius: 10px; }
-.checklist input { margin-right: 10px; }
+
+// Update timer every second
+setInterval(updateTimer, 1000);
+updateTimer();
