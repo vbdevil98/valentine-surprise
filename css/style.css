@@ -1,196 +1,157 @@
-/* Import a cute, rounded font */
-@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;600&family=Dancing+Script:wght@600&display=swap');
 
 body {
     font-family: 'Fredoka', sans-serif;
-    background-color: #ffe6e6;
+    background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%);
     margin: 0;
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow-x: hidden; /* Prevents scrollbars when button moves */
+    overflow-x: hidden;
     text-align: center;
 }
 
-/* Floating Hearts Background Animation */
+/* Floating Hearts Background */
 body::before {
-    content: "❤️ 💖 💘 💝 💓";
+    content: "❤️ 💖 💌 💘 💝 💓";
     position: fixed;
-    top: -50px;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    top: 0; left: 0; width: 100%; height: 100%;
     font-size: 2rem;
-    opacity: 0.1;
+    opacity: 0.15;
     z-index: -1;
-    animation: floatBackground 20s linear infinite;
+    animation: floatBackground 25s linear infinite;
+    pointer-events: none;
 }
-
 @keyframes floatBackground {
-    0% { transform: translateY(0); }
-    50% { transform: translateY(50px); }
-    100% { transform: translateY(0); }
+    0% { transform: translateY(100vh) rotate(0deg); }
+    100% { transform: translateY(-100px) rotate(360deg); }
 }
 
+/* Glassmorphism Container */
 .container {
-    background: rgba(255, 255, 255, 0.95);
-    padding: 2rem;
-    border-radius: 25px;
-    box-shadow: 0 10px 30px rgba(255, 77, 77, 0.2);
+    background: rgba(255, 255, 255, 0.65);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    padding: 2.5rem;
+    border-radius: 30px;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.18);
     width: 90%;
-    max-width: 500px;
-    border: 4px solid #fff;
+    max-width: 550px;
     position: relative;
     z-index: 10;
+    transition: transform 0.3s;
 }
 
 h1 {
-    color: #ff4d4d;
+    font-family: 'Dancing Script', cursive;
+    color: #d63031;
+    font-size: 2.8rem;
     margin-bottom: 10px;
-    font-size: 2.2rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
 }
 
-p {
-    color: #555;
-    font-size: 1.1rem;
-    line-height: 1.6;
-}
+p { color: #444; font-size: 1.1rem; line-height: 1.6; }
 
 /* Buttons */
 .btn-container {
-    margin-top: 20px;
-    min-height: 60px; /* Keeps layout stable */
+    margin-top: 25px;
     display: flex;
     justify-content: center;
-    gap: 15px;
+    gap: 20px;
+    flex-wrap: wrap;
 }
 
 button {
     font-family: 'Fredoka', sans-serif;
-    font-size: 1.2rem;
-    padding: 12px 25px;
+    font-size: 1.1rem;
+    padding: 12px 28px;
     border: none;
     border-radius: 50px;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 15px rgba(255, 77, 77, 0.3);
+    font-weight: 600;
 }
 
 .yes-btn, .nav-btn {
-    background-color: #ff4d4d;
+    background: linear-gradient(45deg, #ff6b6b, #ff4757);
     color: white;
 }
-
 .yes-btn:hover, .nav-btn:hover {
-    transform: scale(1.05);
-    background-color: #ff3333;
-    box-shadow: 0 6px 12px rgba(255, 51, 51, 0.3);
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 8px 20px rgba(255, 77, 77, 0.5);
 }
 
 #noBtn {
-    background-color: #e0e0e0;
-    color: #444;
-    position: relative; /* Starts relative, becomes fixed when moving */
+    background: #dfe6e9;
+    color: #636e72;
+    position: relative;
 }
 
-/* Gallery Styles */
+/* Gallery Polaroids */
 .gallery {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 15px;
-    margin: 20px 0;
+    display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin: 20px 0;
 }
-
 .polaroid {
-    background: white;
-    padding: 10px 10px 35px 10px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-    transform: rotate(-3deg);
-    transition: transform 0.3s;
-    width: 130px;
+    background: white; padding: 10px 10px 40px 10px;
+    box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+    transform: rotate(-3deg); transition: transform 0.3s;
+    width: 140px; border-radius: 4px;
 }
-
 .polaroid:nth-child(even) { transform: rotate(3deg); }
-.polaroid:hover { transform: scale(1.1) rotate(0deg); z-index: 5; }
+.polaroid:hover { transform: scale(1.15) rotate(0deg) !important; z-index: 10; }
+.polaroid img { width: 100%; border-radius: 4px; display: block; }
+.caption { margin-top: 10px; color: #555; font-family: 'Dancing Script', cursive; font-size: 1.2rem; }
 
-.polaroid img {
-    width: 100%;
-    border-radius: 4px;
-}
-
-.caption {
-    margin-top: 8px;
-    font-size: 0.8rem;
-    color: #777;
-    font-weight: bold;
-}
-
-/* Lists & Checkboxes */
-.list-group {
-    text-align: left;
-    list-style: none;
-    padding: 0;
-}
-
-.list-group li, .checklist label {
-    background: #fff0f0;
-    margin: 8px 0;
-    padding: 12px;
+/* Lists */
+.list-group { list-style: none; padding: 0; text-align: left; }
+.list-group li {
+    background: rgba(255, 255, 255, 0.6);
+    margin: 8px 0; padding: 12px 15px;
     border-radius: 12px;
-    display: flex;
-    align-items: center;
-    font-size: 1rem;
+    border-left: 5px solid #ff6b6b;
+    font-size: 1.05rem;
+    animation: fadeIn 0.5s ease-in-out;
+    animation-fill-mode: both;
+}
+/* Stagger animation for list items */
+.list-group li:nth-child(1) { animation-delay: 0.1s; }
+.list-group li:nth-child(2) { animation-delay: 0.2s; }
+.list-group li:nth-child(3) { animation-delay: 0.3s; }
+.list-group li:nth-child(4) { animation-delay: 0.4s; }
+.list-group li:nth-child(5) { animation-delay: 0.5s; }
+/* Add more if needed */
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateX(-20px); }
+    to { opacity: 1; transform: translateX(0); }
 }
 
-.checklist label { cursor: pointer; }
-.checklist input { margin-right: 12px; transform: scale(1.3); accent-color: #ff4d4d; }
-
-/* Coupons */
-.coupon-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    margin-top: 15px;
-}
-
+/* Coupon Grid */
+.coupon-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 15px; }
 .coupon {
-    border: 2px dashed #ffb3b3;
-    background: #fff;
-    padding: 10px;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: 0.2s;
+    border: 2px dashed #ff7675; background: #fff;
+    padding: 15px; border-radius: 15px; cursor: pointer;
+    position: relative; overflow: hidden;
 }
-
-.coupon:hover { background-color: #fff5f5; border-color: #ff4d4d; }
-.coupon h3 { font-size: 1rem; margin: 0 0 5px 0; color: #d63031; }
-.coupon p { font-size: 0.8rem; margin: 0; color: #888; }
-
-/* Input Fields */
-input[type="text"] {
-    width: 80%;
-    padding: 10px;
-    border: 2px solid #ddd;
-    border-radius: 8px;
-    font-family: inherit;
-    margin: 10px 0;
+.coupon::before, .coupon::after {
+    content: ''; position: absolute; top: 50%; width: 20px; height: 20px;
+    background: #fad0c4; border-radius: 50%; transform: translateY(-50%);
 }
+.coupon::before { left: -10px; }
+.coupon::after { right: -10px; }
+.coupon:hover { transform: scale(1.05); background: #ffeaa7; }
 
-/* Music Button */
+/* Music Player Button */
 .music-control {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: white;
-    padding: 10px 15px;
-    border-radius: 50px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    cursor: pointer;
-    font-size: 0.9rem;
-    z-index: 100;
-    border: 2px solid #ff4d4d;
-    color: #ff4d4d;
-    font-weight: bold;
+    position: fixed; bottom: 20px; right: 20px;
+    background: white; width: 50px; height: 50px;
+    border-radius: 50%; box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    display: flex; justify-content: center; align-items: center;
+    cursor: pointer; z-index: 100; font-size: 1.5rem;
+    border: 2px solid #ff7675;
+    animation: pulse 2s infinite;
 }
+@keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.1); } 100% { transform: scale(1); } }
