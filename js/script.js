@@ -1,10 +1,10 @@
 document.addEventListener('DOMContentLoaded', function() {
     
-    // --- 1. RELATIONSHIP TIMER (Only runs if #timer exists) ---
+    // --- 1. RELATIONSHIP TIMER ---
     const timerElement = document.getElementById("timer");
     if (timerElement) {
-        // CHANGE THIS DATE TO YOUR ANNIVERSARY (YYYY-MM-DD)
-        const startDate = new Date("2024-01-01"); 
+        // OFFICIAL DATE: Oct 13, 2023
+        const startDate = new Date("2023-10-13"); 
 
         function updateTimer() {
             const now = new Date();
@@ -16,9 +16,9 @@ document.addEventListener('DOMContentLoaded', function() {
             const seconds = Math.floor((diff / 1000) % 60);
 
             timerElement.innerHTML = `
-                <div style="font-size: 0.9rem; color: #777; margin-bottom: 5px;">We've been together for:</div>
-                <div style="font-size: 1.1rem; font-weight: bold; color: #ff4d4d;">
-                    ${days} Days, ${hours} Hrs, ${minutes} Mins, ${seconds} Secs ❤️
+                <div style="font-size: 1rem; color: #555; margin-bottom: 5px;">Together since Oct 13, 2023 ❤️</div>
+                <div style="font-size: 1.3rem; font-weight: 700; color: #d63031; background: rgba(255,255,255,0.5); padding: 10px; border-radius: 10px;">
+                    ${days} Days : ${hours} Hrs : ${minutes} Mins : ${seconds} Secs
                 </div>
             `;
         }
@@ -26,49 +26,44 @@ document.addEventListener('DOMContentLoaded', function() {
         updateTimer();
     }
 
-    // --- 2. THE RUNAWAY "NO" BUTTON (Only runs if #noBtn exists) ---
+    // --- 2. THE IMPOSSIBLE NO BUTTON ---
     const noBtn = document.getElementById("noBtn");
     if (noBtn) {
-        const noTexts = ["Are you sure? 🥺", "Don't do this! 💔", "I'll cry... 😭", "Please? 🌹", "Think again! 🤔", "Just click YES! 😡"];
+        const noTexts = ["Are you sure? 🥺", "Wrong button! ❌", "I'll cry... 😭", "Try the other one! 👉", "Don't do this! 💔", "Sigh... 😞"];
         let textIndex = 0;
 
         function moveButton() {
-            // Calculate available screen space
-            const maxWidth = window.innerWidth - noBtn.offsetWidth - 20;
-            const maxHeight = window.innerHeight - noBtn.offsetHeight - 20;
+            const maxWidth = window.innerWidth - noBtn.offsetWidth - 30;
+            const maxHeight = window.innerHeight - noBtn.offsetHeight - 30;
 
-            // Generate random coordinates
-            const randomX = Math.max(10, Math.floor(Math.random() * maxWidth));
-            const randomY = Math.max(10, Math.floor(Math.random() * maxHeight));
+            const randomX = Math.max(20, Math.floor(Math.random() * maxWidth));
+            const randomY = Math.max(20, Math.floor(Math.random() * maxHeight));
 
-            // Apply new style
             noBtn.style.position = "fixed";
             noBtn.style.left = randomX + "px";
             noBtn.style.top = randomY + "px";
-            noBtn.style.zIndex = "1000";
+            noBtn.style.zIndex = "100";
             
-            // Change text and style to look "angry/sad"
+            // Visual changes
             noBtn.innerText = noTexts[textIndex];
-            noBtn.style.backgroundColor = "#ff6b6b";
+            noBtn.style.backgroundColor = "#ff7675";
             noBtn.style.color = "white";
+            noBtn.style.boxShadow = "0 5px 15px rgba(0,0,0,0.2)";
             
             textIndex = (textIndex + 1) % noTexts.length;
         }
 
-        // Trigger on hover (desktop) and touch (mobile)
+        // Move on Hover (Desktop) & Touch (Mobile)
         noBtn.addEventListener("mouseover", moveButton);
         noBtn.addEventListener("touchstart", function(e) {
-            e.preventDefault(); // Prevents clicking
-            moveButton();
+             e.preventDefault(); 
+             moveButton(); 
         });
-        noBtn.addEventListener("click", moveButton); // Just in case they click fast
+        noBtn.addEventListener("click", moveButton);
     }
-
-    // --- 3. MUSIC PLAYER ---
-    // Note: Music logic is inline in index.html to ensure it works simply
 });
 
-// --- 4. GLOBAL FUNCTIONS (Called by onclick attributes) ---
+// --- 3. GLOBAL FUNCTIONS ---
 
 function toggleMusic() {
     const music = document.getElementById("bgMusic");
@@ -76,64 +71,48 @@ function toggleMusic() {
     
     if (music.paused) {
         music.play();
-        btn.innerHTML = "⏸️ Pause Song";
+        btn.innerHTML = "⏸️";
+        btn.style.animation = "none"; // Stop pulsing when playing
     } else {
         music.pause();
-        btn.innerHTML = "🎵 Play Song";
+        btn.innerHTML = "🎵";
     }
 }
 
 function checkQuiz(isCorrect, btn) {
     if (isCorrect) {
-        // Success animation or redirect
-        btn.style.backgroundColor = "#4cd137";
-        btn.innerText = "Correct! 🎉";
-        setTimeout(() => {
-            location.href = "reasons.html";
-        }, 800);
+        btn.style.backgroundColor = "#55efc4";
+        btn.innerText = "YAY! Correct! 🎉";
+        setTimeout(() => { location.href = "reasons.html"; }, 1000);
     } else {
-        // Shake effect
-        btn.style.backgroundColor = "#ffcccc";
-        btn.classList.add("shake");
-        btn.innerText = "Try Again! 😈";
-        setTimeout(() => {
-            btn.classList.remove("shake");
-        }, 500);
+        btn.style.backgroundColor = "#ff7675";
+        btn.innerText = "Wrong! Try Again 😈";
+        btn.classList.add("shake-animation");
+        setTimeout(() => { 
+            btn.innerText = "Ryan Reynolds? Really?"; 
+            btn.classList.remove("shake-animation");
+        }, 1000);
     }
 }
 
 function redeemCoupon(element) {
     if (!element.classList.contains("redeemed")) {
-        element.style.background = "#d1ccc0";
-        element.style.borderColor = "#777";
-        element.style.cursor = "default";
+        element.style.background = "#b2bec3";
         element.classList.add("redeemed");
         element.querySelector("h3").innerText = "REDEEMED ✅";
-        
-        // Confetti explosion
-        confetti({
-            particleCount: 100,
-            spread: 70,
-            origin: { y: 0.6 }
-        });
-        alert("Coupon redeemed! Take a screenshot instantly! 📸");
+        confetti({ particleCount: 100, spread: 70, origin: { y: 0.6 } });
+        alert("Success! Take a screenshot to claim this reward! 📸");
     }
 }
 
 function signContract() {
     const nameInput = document.getElementById("signature");
     if (nameInput.value.trim() === "") {
-        alert("Hey! You need to sign your name first! 🖋️");
+        alert("Please sign your name first! 🖋️");
         nameInput.focus();
     } else {
-        alert("It is official! " + nameInput.value + " has agreed to be my Valentine forever! ❤️");
-        confetti({
-            particleCount: 150,
-            spread: 100,
-            origin: { y: 0.6 }
-        });
-        setTimeout(() => {
-            location.href = "coupons.html";
-        }, 2000);
+        alert("Officially Signed! ❤️ " + nameInput.value + " is now my Valentine forever.");
+        confetti({ particleCount: 200, spread: 100, origin: { y: 0.6 } });
+        setTimeout(() => { location.href = "coupons.html"; }, 1500);
     }
 }
