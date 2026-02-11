@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Gifts 🎁</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .coupon-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .coupon {
+            background: #fff;
+            border: 2px dashed #ff4d4d;
+            padding: 15px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .coupon:hover {
+            transform: scale(1.05);
+            background: #fff0f0;
+        }
+        .coupon h3 { font-size: 1.2rem; margin: 5px 0; }
+        .coupon p { font-size: 0.9rem; color: #777; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Valentine's Coupons 🎟️</h1>
+        <p>Click a ticket to redeem it! (Screenshot it as proof)</p>
+        
+        <div class="coupon-grid">
+            <div class="coupon" onclick="redeem(this)">
+                <h3>💆‍♀️ 30 Min Massage</h3>
+                <p>Valid anytime, anywhere.</p>
+            </div>
+            <div class="coupon" onclick="redeem(this)">
+                <h3>🍕 Dinner on Me</h3>
+                <p>I pay, you pick the place.</p>
+            </div>
+            <div class="coupon" onclick="redeem(this)">
+                <h3>🎬 Movie Night Pick</h3>
+                <p>No complaints from me!</p>
+            </div>
+            <div class="coupon" onclick="redeem(this)">
+                <h3>👑 "I'm Right" Card</h3>
+                <p>Win one argument instantly.</p>
+            </div>
+            <div class="coupon" onclick="redeem(this)">
+                <h3>🛌 Breakfast in Bed</h3>
+                <p>Made with love (and coffee).</p>
+            </div>
+            <div class="coupon" onclick="redeem(this)">
+                <h3>🥺 Forgive Me</h3>
+                <p>Get out of jail free card.</p>
+            </div>
+        </div>
+
+        <button onclick="location.href='../index.html'" class="back-btn" style="margin-top:20px;">Back to Home 🏠</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script>
+        function redeem(element) {
+            element.style.background = "#d4edda";
+            element.style.border = "2px solid #28a745";
+            element.querySelector("h3").innerText = "REDEEMED! ✅";
+            confetti({ particleCount: 100, spread: 70, origin: { y: 0.6 } });
+            alert("Coupon Redeemed! Take a screenshot now! 📸");
+        }
+    </script>
+</body>
+</html>
