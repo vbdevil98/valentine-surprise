@@ -1,37 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Contract</title>
-    <link rel="stylesheet" href="../css/style.css">
-    <style>
-        input[type="text"] { width: 80%; padding: 12px; border: 2px solid #ddd; border-radius: 8px; font-size: 1.1rem; text-align: center; margin: 15px 0; }
-        label { display: block; text-align: left; background: rgba(255,255,255,0.6); padding: 10px; margin: 5px 0; border-radius: 8px; }
-    </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>The Agreement</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    input[type="text"] {
+      width: 80%; padding: 12px;
+      border: 2px solid #ddd; border-radius: 8px;
+      font-family: inherit; margin: 15px 0;
+      text-align: center; font-size: 1.05rem;
+    }
+  </style>
 </head>
 <body>
-    <div class="bg-heart h3"></div>
+  <div class="container small">
+    <h1>Valentine's Contract 📜</h1>
+    <p>This document certifies that we are stuck together forever.</p>
+    <p style="font-size:0.9rem;color:#777;">(No returns or exchanges allowed)</p>
 
-    <div class="container" style="display: block;">
-        <h1>Valentine's Contract 📜</h1>
-        <p>By signing, you agree to these terms:</p>
-
-        <div>
-            <label><input type="checkbox" checked> I accept all hugs.</label>
-            <label><input type="checkbox" checked> I will listen to Khamoshiyan.</label>
-            <label><input type="checkbox"> I admit you are the better driver.</label>
-        </div>
-
-        <p><strong>Sign Here:</strong></p>
-        <input type="text" id="signature" placeholder="Type name...">
-        
-        <div class="btn-container">
-            <button class="nav-btn" onclick="signContract()">Seal the Deal 💋</button>
-        </div>
+    <div style="text-align:left;background:rgba(255,255,255,0.5);padding:12px;border-radius:12px;">
+      <label style="display:block;margin:8px 0;"><input type="checkbox" checked> I will accept all hugs.</label>
+      <label style="display:block;margin:8px 0;"><input type="checkbox" checked> I will listen to "Khamoshiyan" with you.</label>
+      <label style="display:block;margin:8px 0;"><input type="checkbox"> We will go on a dinner date soon.</label>
+      <label style="display:block;margin:8px 0;"><input type="checkbox"> I admit you are the better driver.</label>
     </div>
-    
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-    <script src="../js/script.js"></script>
+
+    <p><strong>Sign Here to Accept:</strong></p>
+    <input type="text" id="signature" placeholder="Type your name..." aria-label="Type your name to sign">
+
+    <div class="btn-container">
+      <button class="nav-btn" onclick="signContract()">Seal the Deal 💋</button>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <script src="../js/script.js"></script>
 </body>
 </html>
