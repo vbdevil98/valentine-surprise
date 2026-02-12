@@ -3,30 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Security Check</title>
+    <meta name="description" content="Security Check - Quiz Page">
+    <title>Security Check 🔒</title>
     <link rel="stylesheet" href="../css/style.css">
-    <style>
-        .quiz-btn { width: 100%; margin: 8px 0; }
-        .shake-animation { animation: shake 0.5s; }
-        @keyframes shake { 0% { transform: translateX(0); } 25% { transform: translateX(-10px); } 75% { transform: translateX(10px); } 100% { transform: translateX(0); } }
-    </style>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔒</text></svg>">
 </head>
 <body>
     <div class="container">
         <h1>Wait! Security Check 👮‍♂️</h1>
-        <p>Before you say Yes, you must answer this:</p>
-        <p><strong>Who is the most handsome & annoying boyfriend?</strong></p>
+        
+        <p style="font-size: 1.2rem; margin: 25px 0;">
+            Before you proceed, you must answer this very important question:
+        </p>
 
-        <button class="quiz-btn" onclick="checkQuiz(false, this)">Ryan Reynolds</button>
-        <button class="quiz-btn" onclick="checkQuiz(true, this)">YOU Are! (Obv) ❤️</button>
-        <button class="quiz-btn" onclick="checkQuiz(false, this)">Someone else</button>
+        <div style="background: rgba(255, 255, 255, 0.6); padding: 25px; border-radius: 20px; margin: 20px 0; border: 3px solid rgba(255, 107, 107, 0.3);">
+            <p style="font-size: 1.35rem; font-weight: 600; color: #d63031;">
+                Who is the most handsome AND annoying boyfriend?
+            </p>
+        </div>
+
+        <div style="margin-top: 30px;">
+            <button class="quiz-btn" onclick="checkQuiz(false, this)">
+                🎬 Ryan Reynolds
+            </button>
+            <button class="quiz-btn" onclick="checkQuiz(true, this)" style="background: linear-gradient(135deg, #ff6b6b, #ff4757);">
+                ❤️ YOU Are! (Obviously)
+            </button>
+            <button class="quiz-btn" onclick="checkQuiz(false, this)">
+                🤔 Someone else entirely
+            </button>
+        </div>
+
+        <p style="font-size: 0.9rem; color: #636e72; margin-top: 25px; font-style: italic;">
+            Choose wisely... your Valentine status depends on it! 😏
+        </p>
     </div>
-
-    <audio id="bgMusic" loop>
-        <source src="../images/song.mp3" type="audio/mpeg">
-    </audio>
-    <div class="music-control" onclick="toggleMusic()">🎵</div>
-
+    
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <script src="../js/script.js"></script>
 </body>
 </html>
