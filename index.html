@@ -1,36 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>A Special Question...</title>
-  <link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Special Question...</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <div class="container">
-    <!-- Tenor embed is optional; keep it but it's async -->
-    <div class="tenor-gif-embed" data-postid="22050818" data-share-method="host" data-aspect-ratio="1" data-width="100%"></div>
-    <script async src="https://tenor.com/embed.js"></script>
 
-    <h1>Will you be my Valentine? 🌹</h1>
-    <p>I promise to handle the spiders and always share my fries.</p>
+    <div class="container">
+        <div class="tenor-gif-embed" data-postid="22050818" data-share-method="host" data-aspect-ratio="1" data-width="100%"></div>
+        <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
 
-    <div id="timer" style="margin: 14px 0;"></div>
+        <h1>Will you be my Valentine? 🌹</h1>
+        <p>I promise to handle the spiders and always share my fries.</p>
 
-    <div class="btn-container" aria-hidden="false">
-      <button class="yes-btn" onclick="location.href='pages/quiz.html'">YES! 😍</button>
-      <button id="noBtn" aria-label="No">No 😢</button>
+        <div id="timer" style="margin: 20px 0;"></div>
+
+        <div class="btn-container">
+            <button class="yes-btn" onclick="location.href='pages/quiz.html'">YES! 😍</button>
+            <button id="noBtn">No 😢</button>
+        </div>
     </div>
-  </div>
 
-  <!-- Background music (user must upload images/song.mp3) -->
-  <audio id="bgMusic" loop preload="none">
-    <source src="images/song.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
-  </audio>
+    <audio id="bgMusic" loop>
+        <source src="images/song.mp3" type="audio/mpeg">
+    </audio>
+    <div class="music-control" onclick="toggleMusic()">🎵</div>
 
-  <div class="music-control" title="Toggle music">🎵</div>
-
-  <script src="js/script.js"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>
