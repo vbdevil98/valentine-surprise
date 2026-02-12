@@ -3,49 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Us ❤️</title>
+    <meta name="description" content="Our Best Memories Together">
+    <title>Our Memories 📸</title>
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📸</text></svg>">
 </head>
 <body>
-    <div class="container" style="max-width: 650px;">
+    <div class="container" style="max-width: 900px;">
         <h1>Our Best Moments 📸</h1>
-        <p>Proof that we are the cutest couple.</p>
+        
+        <p style="font-size: 1.15rem; margin: 20px 0;">
+            Every picture tells a story, and our story is my favorite. 💕
+        </p>
+
+        <p style="font-size: 0.95rem; color: #636e72; font-style: italic; margin-bottom: 30px;">
+            (Hover over the photos to see them better!)
+        </p>
         
         <div class="gallery">
             <div class="polaroid">
-                <img src="../images/image1.jpg" alt="Memory 1">
-                <div class="caption">The Beginning</div>
+                <img src="../images/image1.jpg" alt="Our beginning - First memories together" loading="lazy">
+                <div class="caption">The Beginning ✨</div>
             </div>
             <div class="polaroid">
-                <img src="../images/image2.jpg" alt="Memory 2">
-                <div class="caption">Adventures</div>
+                <img src="../images/image2.jpg" alt="Adventures together" loading="lazy">
+                <div class="caption">Adventures 🌍</div>
             </div>
             <div class="polaroid">
-                <img src="../images/image3.jpg" alt="Memory 3">
-                <div class="caption">Silly Face</div>
+                <img src="../images/image3.jpg" alt="Silly moments" loading="lazy">
+                <div class="caption">Silly Us 😜</div>
             </div>
             <div class="polaroid">
-                <img src="../images/image4.jpg" alt="Memory 4">
-                <div class="caption">Date Night</div>
+                <img src="../images/image4.jpg" alt="Date night memories" loading="lazy">
+                <div class="caption">Date Night 🍽️</div>
             </div>
             <div class="polaroid">
-                <img src="../images/image5.jpg" alt="Memory 5">
-                <div class="caption">Trips</div>
+                <img src="../images/image5.jpg" alt="Travel memories" loading="lazy">
+                <div class="caption">Our Trips ✈️</div>
             </div>
             <div class="polaroid">
-                <img src="../images/image6.jpg" alt="Memory 6">
-                <div class="caption">Fav Photo</div>
+                <img src="../images/image6.jpg" alt="Favorite photo together" loading="lazy">
+                <div class="caption">Favorite 💖</div>
             </div>
         </div>
 
-        <button class="nav-btn" onclick="location.href='future.html'">Next: The Future 👉</button>
+        <div style="background: rgba(255, 255, 255, 0.6); padding: 20px; border-radius: 15px; margin: 30px 0; text-align: center;">
+            <p style="font-size: 1.1rem; color: #d63031; font-weight: 600;">
+                🎬 "Here's to many more memories together!" 🥂
+            </p>
+        </div>
+
+        <div class="btn-container">
+            <button class="nav-btn" onclick="location.href='future.html'">
+                What's Next? 👉
+            </button>
+        </div>
+
+        <p style="font-size: 0.85rem; color: #636e72; margin-top: 20px; font-style: italic;">
+            Note: Replace the placeholder images in the 'images' folder with your actual photos! 📝
+        </p>
     </div>
-
-    <audio id="bgMusic" loop>
-        <source src="../images/song.mp3" type="audio/mpeg">
-    </audio>
-    <div class="music-control" onclick="toggleMusic()">🎵</div>
-
+    
     <script src="../js/script.js"></script>
 </body>
 </html>
