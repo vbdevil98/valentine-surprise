@@ -3,44 +3,97 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Agreement</title>
+    <meta name="description" content="Valentine's Day Contract">
+    <title>The Agreement 📜</title>
     <link rel="stylesheet" href="../css/style.css">
-    <style>
-        input[type="text"] {
-            width: 80%; padding: 12px;
-            border: 2px solid #ddd; border-radius: 8px;
-            font-family: inherit; margin: 15px 0;
-            text-align: center; font-size: 1.1rem;
-            background: rgba(255,255,255,0.9);
-        }
-    </style>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📜</text></svg>">
 </head>
 <body>
-    <div class="container">
-        <h1>Valentine's Contract 📜</h1>
-        <p>This document certifies that we are stuck together forever.</p>
-        <p style="font-size: 0.9rem; color: #777;">(No returns or exchanges allowed)</p>
+    <div class="container" style="max-width: 750px;">
+        <h1>Valentine's Day Contract 📜</h1>
+        
+        <p style="font-size: 1.2rem; margin: 20px 0;">
+            This legally binding* document certifies that we are officially stuck together forever.
+        </p>
+        
+        <p style="font-size: 0.85rem; color: #636e72; font-style: italic; margin-bottom: 30px;">
+            *Not actually legally binding, but emotionally binding for sure! ❤️
+        </p>
 
-        <div style="text-align: left; background: rgba(255,255,255,0.5); padding: 20px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.8);">
-            <label style="display:block; margin: 10px 0; cursor:pointer;"><input type="checkbox" checked> I will accept all hugs.</label>
-            <label style="display:block; margin: 10px 0; cursor:pointer;"><input type="checkbox" checked> I will listen to "Khamoshiyan" with you.</label>
-            <label style="display:block; margin: 10px 0; cursor:pointer;"><input type="checkbox"> We will go on a dinner date soon.</label>
-            <label style="display:block; margin: 10px 0; cursor:pointer;"><input type="checkbox"> I admit you are the better driver.</label>
+        <h2 style="font-size: 1.8rem; color: #e17055; margin: 25px 0;">Terms & Conditions:</h2>
+
+        <div class="contract-box">
+            <label>
+                <input type="checkbox" checked disabled>
+                <strong>Article 1:</strong> I will accept all surprise hugs, kisses, and cuddles. No exceptions. 🫂
+            </label>
+            
+            <label>
+                <input type="checkbox" checked disabled>
+                <strong>Article 2:</strong> I agree to listen to "Khamoshiyan" on repeat without complaining. 🎵
+            </label>
+            
+            <label>
+                <input type="checkbox" id="dinnerDate">
+                <strong>Article 3:</strong> We will go on a proper dinner date soon. (Promise!) 🍽️
+            </label>
+            
+            <label>
+                <input type="checkbox" id="driverAdmit">
+                <strong>Article 4:</strong> I reluctantly admit you might be the better driver. 🚗
+                <span style="font-size: 0.85rem; color: #636e72;">(But I'm getting better!)</span>
+            </label>
+            
+            <label>
+                <input type="checkbox" id="jokes">
+                <strong>Article 5:</strong> I will continue to laugh at your jokes, even the terrible ones. 😂
+            </label>
+            
+            <label>
+                <input type="checkbox" id="support">
+                <strong>Article 6:</strong> I promise to support your dreams and be your biggest fan. 🌟
+            </label>
         </div>
 
-        <p><strong>Sign Here to Accept:</strong></p>
-        <input type="text" id="signature" placeholder="Type your name...">
+        <div style="background: rgba(255, 107, 107, 0.15); padding: 20px; border-radius: 15px; margin: 25px 0; border: 2px dashed #ff7675;">
+            <p style="font-size: 1rem; color: #2d3436; margin-bottom: 15px;">
+                <strong>⚠️ Important Notice:</strong>
+            </p>
+            <p style="font-size: 0.95rem; color: #636e72;">
+                • No returns or exchanges allowed ✖️<br>
+                • Valid for lifetime ♾️<br>
+                • Renewal is automatic 🔄<br>
+                • Breaking this contract results in unlimited guilt trips 😭
+            </p>
+        </div>
+
+        <div style="margin: 30px 0;">
+            <p style="font-size: 1.2rem; font-weight: 600; margin-bottom: 15px;">
+                📝 Sign Here to Accept All Terms:
+            </p>
+            <input 
+                type="text" 
+                id="signature" 
+                placeholder="Type your name here..." 
+                autocomplete="off"
+                maxlength="50"
+            >
+            <p style="font-size: 0.85rem; color: #636e72; margin-top: 10px;">
+                By signing, you agree to be my Valentine forever and always. ❤️
+            </p>
+        </div>
         
         <div class="btn-container">
-            <button class="nav-btn" onclick="signContract()">Seal the Deal 💋</button>
+            <button class="nav-btn" onclick="signContract()" style="font-size: 1.3rem; padding: 18px 40px;">
+                💋 Seal the Deal with a Kiss
+            </button>
         </div>
+
+        <p style="font-size: 0.8rem; color: #636e72; margin-top: 25px; font-style: italic;">
+            Contract drafted with 💝 on February 13, 2026
+        </p>
     </div>
     
-    <audio id="bgMusic" loop>
-        <source src="../images/song.mp3" type="audio/mpeg">
-    </audio>
-    <div class="music-control" onclick="toggleMusic()">🎵</div>
-
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <script src="../js/script.js"></script>
 </body>
