@@ -3,24 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A Question...</title>
+    <title>For My Love ❤️</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-    <div class="container">
-        <div class="tenor-gif-embed" data-postid="22050818" data-share-method="host" data-aspect-ratio="1" data-width="100%"></div>
-        <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
-
-        <h1>Will you be my Valentine? 🌹</h1>
-        <p>I promise to handle the spiders, buy you food, and listen to "Khamoshiyan" on repeat.</p>
-
-        <div id="timer" style="margin: 25px 0;"></div>
-
-        <div class="btn-container">
-            <button class="yes-btn" onclick="location.href='pages/quiz.html'">YES! 😍</button>
-            <button id="noBtn">No 😢</button>
+    <div id="envelope" onclick="openLetter()">
+        <div class="envelope-wrapper">
+            <div class="wax-seal"></div>
         </div>
+    </div>
+
+    <div class="container">
+        
+        <div class="gif-container">
+            <div class="tenor-gif-embed" data-postid="22050818" data-share-method="host" data-aspect-ratio="1" data-width="100%"></div>
+            <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+        </div>
+
+        <div class="text-content">
+            <h1><span id="typewriter-text"></span><span class="cursor"></span></h1>
+            
+            <p>I promise to handle the spiders, buy you food, and listen to "Khamoshiyan" on repeat.</p>
+            
+            <div style="font-size: 0.9rem; color: #777;">Together Since Oct 13, 2023:</div>
+            <div id="timer">Loading...</div>
+
+            <div class="btn-container">
+                <button class="yes-btn" onclick="location.href='pages/quiz.html'">YES! 😍</button>
+                <button id="noBtn">No 😢</button>
+            </div>
+        </div>
+
     </div>
 
     <audio id="bgMusic" loop>
