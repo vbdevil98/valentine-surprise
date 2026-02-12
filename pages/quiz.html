@@ -1,25 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Security Check</title>
-  <link rel="stylesheet" href="../css/style.css">
-  <style>
-    .quiz-btn { width: 100%; margin: 8px 0; padding: 12px; border-radius: 10px; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Security Check</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .quiz-btn { width: 100%; margin: 8px 0; }
+        .shake-animation { animation: shake 0.5s; }
+        @keyframes shake { 0% { transform: translateX(0); } 25% { transform: translateX(-10px); } 75% { transform: translateX(10px); } 100% { transform: translateX(0); } }
+    </style>
 </head>
 <body>
-  <div class="container small">
-    <h1>Wait! Security Check 👮‍♂️</h1>
-    <p>Before you say Yes, you must answer this:</p>
-    <p><strong>Who is the most handsome & annoying boyfriend?</strong></p>
+    <div class="container">
+        <h1>Wait! Security Check 👮‍♂️</h1>
+        <p>Before you say Yes, you must answer this:</p>
+        <p><strong>Who is the most handsome & annoying boyfriend?</strong></p>
 
-    <button class="quiz-btn" onclick="checkQuiz(false, this)">Ryan Reynolds</button>
-    <button class="quiz-btn" onclick="checkQuiz(true, this)">YOU Are! (Obv) ❤️</button>
-    <button class="quiz-btn" onclick="checkQuiz(false, this)">Someone else</button>
-  </div>
+        <button class="quiz-btn" onclick="checkQuiz(false, this)">Ryan Reynolds</button>
+        <button class="quiz-btn" onclick="checkQuiz(true, this)">YOU Are! (Obv) ❤️</button>
+        <button class="quiz-btn" onclick="checkQuiz(false, this)">Someone else</button>
+    </div>
 
-  <script src="../js/script.js"></script>
+    <audio id="bgMusic" loop>
+        <source src="../images/song.mp3" type="audio/mpeg">
+    </audio>
+    <div class="music-control" onclick="toggleMusic()">🎵</div>
+
+    <script src="../js/script.js"></script>
 </body>
 </html>
