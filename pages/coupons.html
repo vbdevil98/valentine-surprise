@@ -3,51 +3,92 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Gifts</title>
+    <meta name="description" content="Your Love Coupons - Redeem Your Rewards">
+    <title>Your Rewards 🎁</title>
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎁</text></svg>">
 </head>
 <body>
-    <div class="container">
+    <div class="container" style="max-width: 850px;">
         <h1>Your Love Coupons 🎁</h1>
-        <p>Because you signed the contract, you get rewards!</p>
-        <p style="font-size:0.9rem;">(Click to redeem)</p>
+        
+        <p style="font-size: 1.2rem; margin: 20px 0;">
+            Congratulations! Since you signed the contract, you've unlocked these exclusive rewards!
+        </p>
+        
+        <p style="font-size: 1rem; color: #636e72; margin-bottom: 30px;">
+            Click any coupon to redeem it. Screenshot the redeemed coupon as proof! 📸
+        </p>
 
         <div class="coupon-grid">
             <div class="coupon" onclick="redeemCoupon(this)">
-                <h3>💆‍♀️ Massage</h3>
-                <p>30 Mins. Any time.</p>
+                <h3>💆‍♀️ Relaxing Massage</h3>
+                <p>30 minutes of pure relaxation. Redeemable anytime, anywhere.</p>
             </div>
+            
             <div class="coupon" onclick="redeemCoupon(this)">
                 <h3>🍕 Dinner Date</h3>
-                <p>I pay, you pick.</p>
+                <p>I'll pay, you pick the place. Any restaurant, no complaints!</p>
             </div>
+            
             <div class="coupon" onclick="redeemCoupon(this)">
-                <h3>🥺 Forgiveness</h3>
-                <p>Win 1 argument instantly.</p>
+                <h3>🥺 Win Any Argument</h3>
+                <p>Instant forgiveness card. Use wisely - it's powerful!</p>
             </div>
+            
             <div class="coupon" onclick="redeemCoupon(this)">
-                <h3>🎬 Movie Pick</h3>
-                <p>No complaints from me.</p>
+                <h3>🎬 Movie Marathon</h3>
+                <p>You choose every movie. I'll watch without complaining. Popcorn included!</p>
             </div>
+            
             <div class="coupon" onclick="redeemCoupon(this)">
-                <h3>🚗 Long Drive</h3>
-                <p>Late night music session.</p>
+                <h3>🚗 Late Night Drive</h3>
+                <p>Windows down, music up. Our favorite songs on repeat.</p>
             </div>
+            
             <div class="coupon" onclick="redeemCoupon(this)">
-                <h3>🧁 Sweet Treat</h3>
-                <p>I buy you dessert.</p>
+                <h3>🧁 Dessert Treat</h3>
+                <p>Any dessert you want, my treat. Ice cream, cake, or whatever you're craving!</p>
+            </div>
+            
+            <div class="coupon" onclick="redeemCoupon(this)">
+                <h3>🏠 Lazy Day Pass</h3>
+                <p>A whole day of doing nothing together. No plans, no obligations.</p>
+            </div>
+            
+            <div class="coupon" onclick="redeemCoupon(this)">
+                <h3>📸 Photoshoot Date</h3>
+                <p>I'll be your personal photographer. As many photos as you want!</p>
             </div>
         </div>
 
-        <div class="btn-container">
-            <button class="nav-btn" onclick="location.href='../index.html'" style="background:#636e72;">Back to Start 🏠</button>
+        <div style="background: linear-gradient(135deg, rgba(255, 107, 107, 0.15), rgba(253, 203, 110, 0.15)); padding: 25px; border-radius: 20px; margin: 35px 0; border: 2px solid rgba(255, 107, 107, 0.3);">
+            <h2 style="font-size: 1.5rem; color: #d63031; margin-bottom: 15px;">
+                ✨ Bonus Surprise ✨
+            </h2>
+            <p style="font-size: 1.05rem; color: #2d3436; line-height: 1.6;">
+                Beyond these coupons, you get unlimited:<br>
+                • Hugs and cuddles 🫂<br>
+                • Random surprises 🎉<br>
+                • Love and support 💝<br>
+                • Bad jokes that make you laugh 😂<br>
+                • Someone who thinks you're amazing ⭐
+            </p>
         </div>
+
+        <div class="btn-container" style="gap: 15px;">
+            <button class="nav-btn" onclick="location.href='../index.html'" style="background: linear-gradient(135deg, #636e72, #2d3436);">
+                🏠 Back to Start
+            </button>
+            <button class="nav-btn" onclick="location.reload()">
+                🔄 Reset Coupons
+            </button>
+        </div>
+
+        <p style="font-size: 0.85rem; color: #636e72; margin-top: 30px; font-style: italic; padding: 15px; background: rgba(255, 255, 255, 0.5); border-radius: 10px;">
+            💡 <strong>Pro Tip:</strong> These coupons never expire! Keep coming back to this page whenever you want to redeem one. Just screenshot it after clicking to keep as proof! 📱
+        </p>
     </div>
-
-    <audio id="bgMusic" loop>
-        <source src="../images/song.mp3" type="audio/mpeg">
-    </audio>
-    <div class="music-control" onclick="toggleMusic()">🎵</div>
 
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <script src="../js/script.js"></script>
