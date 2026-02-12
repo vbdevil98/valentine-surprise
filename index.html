@@ -3,30 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A Special Question...</title>
+    <meta name="description" content="A special Valentine's Day surprise">
+    <title>A Special Question... 💝</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💝</text></svg>">
 </head>
 <body>
 
     <div class="container">
-        <div class="tenor-gif-embed" data-postid="22050818" data-share-method="host" data-aspect-ratio="1" data-width="100%"></div>
+        <!-- Animated GIF -->
+        <div class="tenor-gif-embed" data-postid="22050818" data-share-method="host" data-aspect-ratio="1" data-width="100%">
+            <a href="https://tenor.com/view/milk-and-mocha-bear-couple-kisses-lovely-gif-22050818">Milk And Mocha Bear GIF</a>
+        </div>
         <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
 
         <h1>Will you be my Valentine? 🌹</h1>
-        <p>I promise to handle the spiders and always share my fries.</p>
+        
+        <p style="font-size: 1.25rem; margin: 20px 0;">
+            I promise to always share my fries 🍟<br>
+            Handle all the spiders 🕷️<br>
+            And love you forever ❤️
+        </p>
 
-        <div id="timer" style="margin: 20px 0;"></div>
+        <!-- Relationship Timer -->
+        <div id="timer"></div>
 
+        <!-- Interactive Buttons -->
         <div class="btn-container">
-            <button class="yes-btn" onclick="location.href='pages/quiz.html'">YES! 😍</button>
-            <button id="noBtn">No 😢</button>
+            <button class="yes-btn" onclick="location.href='pages/quiz.html'" aria-label="Say yes to being my Valentine">
+                YES! 😍
+            </button>
+            <button id="noBtn" aria-label="Try to say no (good luck!)">
+                No 😢
+            </button>
         </div>
+
+        <p style="font-size: 0.9rem; color: #636e72; margin-top: 25px; font-style: italic;">
+            Hint: The "No" button is really shy... try clicking it! 😏
+        </p>
     </div>
 
-    <audio id="bgMusic" loop>
+    <!-- Background Music -->
+    <audio id="bgMusic" loop preload="auto">
         <source src="images/song.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
     </audio>
-    <div class="music-control" onclick="toggleMusic()">🎵</div>
+    
+    <!-- Music Control Button -->
+    <div class="music-control" onclick="toggleMusic()" role="button" aria-label="Toggle background music" tabindex="0">
+        🎵
+    </div>
 
     <script src="js/script.js"></script>
 </body>
