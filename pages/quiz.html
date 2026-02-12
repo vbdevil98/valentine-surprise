@@ -5,22 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Security Check</title>
     <link rel="stylesheet" href="../css/style.css">
-    <style>
-        .quiz-btn { width: 100%; margin: 8px 0; }
-        .shake-animation { animation: shake 0.5s; }
-        @keyframes shake { 0% { transform: translateX(0); } 25% { transform: translateX(-10px); } 75% { transform: translateX(10px); } 100% { transform: translateX(0); } }
-    </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Wait! Security Check 👮‍♂️</h1>
+    <div class="bg-heart h1"></div>
+    <div class="bg-heart h2"></div>
+
+    <div class="container" style="display: block;"> <h1>Wait! Security Check 👮‍♂️</h1>
         <p>Before you say Yes, you must answer this:</p>
-        <p><strong>Who is the most handsome & annoying boyfriend?</strong></p>
+        <p><strong>Who is the most handsome boyfriend?</strong></p>
 
         <button class="quiz-btn" onclick="checkQuiz(false, this)">Ryan Reynolds</button>
         <button class="quiz-btn" onclick="checkQuiz(true, this)">YOU Are! (Obv) ❤️</button>
         <button class="quiz-btn" onclick="checkQuiz(false, this)">Someone else</button>
     </div>
+    
     <script src="../js/script.js"></script>
 </body>
 </html>
