@@ -1,24 +1,20 @@
-// --- GLOBAL FUNCTIONS (Accessible by HTML Buttons) ---
+// --- 1. GLOBAL FUNCTIONS (Accessible everywhere) ---
 
-// 1. Open Envelope
 function openLetter() {
     const envelope = document.getElementById("envelope");
     const container = document.querySelector(".container");
     const music = document.getElementById("bgMusic");
 
-    // Fade out envelope
     envelope.style.transition = "opacity 0.5s ease";
     envelope.style.opacity = "0";
     
     setTimeout(() => {
         envelope.style.display = "none";
-        // Show Card (Grid for desktop, Block for mobile)
-        container.style.display = (window.innerWidth >= 1024) ? "grid" : "block";
+        // Show container (Desktop gets grid, Mobile gets block)
+        container.style.display = (window.innerWidth >= 900) ? "grid" : "block";
         
-        // Start Typing Effect
         typeWriter();
 
-        // Attempt Auto-Play Music
         if(music) {
             music.volume = 0.5;
             music.play().then(() => {
@@ -27,33 +23,30 @@ function openLetter() {
                     btn.classList.add("playing");
                     btn.innerText = "⏸️";
                 }
-            }).catch(e => console.log("Audio requires interaction"));
+            }).catch(e => console.log("Audio waiting for interaction"));
         }
     }, 500);
 }
 
-// 2. Typing Effect Logic
+// Typing Effect
 const textToType = "Will you be my Valentine? 🌹";
 let charIndex = 0;
-
 function typeWriter() {
     const typeTarget = document.getElementById("typewriter-text");
     const cursor = document.querySelector(".cursor");
-    
     if (typeTarget && charIndex < textToType.length) {
         typeTarget.innerHTML += textToType.charAt(charIndex);
         charIndex++;
         setTimeout(typeWriter, 100);
     } else if (cursor) {
-        cursor.style.display = "none"; // Hide cursor when done
+        cursor.style.display = "none";
     }
 }
 
-// 3. Music Toggle
+// Music Toggle
 function toggleMusic() {
     const music = document.getElementById("bgMusic");
     const btn = document.querySelector(".music-control");
-    
     if (music.paused) {
         music.play();
         btn.classList.add("playing");
@@ -65,98 +58,103 @@ function toggleMusic() {
     }
 }
 
-// 4. Quiz Logic (Fixed Scope)
+// Quiz Logic
 function checkQuiz(isCorrect, btn) {
     if (isCorrect) {
-        btn.style.background = "#55efc4"; // Green
-        btn.style.color = "#fff";
-        btn.innerText = "Correct! You know me! 🎉";
-        setTimeout(() => {
-            window.location.href = "reasons.html"; // Go to next page
-        }, 1000);
+        btn.style.background = "#55efc4";
+        btn.style.color = "white";
+        btn.innerText = "Correct! 🎉";
+        setTimeout(() => { window.location.href = "reasons.html"; }, 1000);
     } else {
-        btn.style.background = "#ff7675"; // Red
-        btn.style.color = "#fff";
-        btn.innerText = "Wrong! Try Again 😈";
-        
-        // Shake Animation
-        const originalText = "Ryan Reynolds"; // Or whatever text was there
+        btn.style.background = "#ff7675";
+        btn.style.color = "white";
+        btn.innerText = "Wrong! 😈";
         btn.style.transform = "translateX(10px)";
-        setTimeout(() => { btn.style.transform = "translateX(-10px)"; }, 100);
-        setTimeout(() => { btn.style.transform = "translateX(10px)"; }, 200);
-        setTimeout(() => { btn.style.transform = "translateX(0)"; }, 300);
+        setTimeout(() => { btn.style.transform = "translateX(0)"; }, 200);
     }
 }
 
-// 5. Contract Signature
+// Contract Logic
 function signContract() {
     const nameInput = document.getElementById("signature");
     if (nameInput.value.trim() === "") {
-        alert("You must sign your name! 🖋️");
+        alert("Sign your name first! 🖋️");
         nameInput.focus();
     } else {
-        alert("Contract Validated! ❤️ " + nameInput.value + " is officially mine forever.");
-        confetti({ particleCount: 300, spread: 100, origin: { y: 0.6 } });
-        setTimeout(() => {
-            window.location.href = "coupons.html";
-        }, 2000);
+        alert("Contract Signed! ❤️ Welcome to forever.");
+        confetti({ particleCount: 200, spread: 100, origin: { y: 0.6 } });
+        setTimeout(() => { window.location.href = "coupons.html"; }, 2000);
     }
 }
 
-// 6. Redeem Coupon
+// Coupon Logic
 function redeemCoupon(element) {
     if (!element.classList.contains("redeemed")) {
         element.style.background = "#b2bec3";
         element.classList.add("redeemed");
         element.querySelector("h3").innerText = "REDEEMED ✅";
         confetti({ particleCount: 100, spread: 70, origin: { y: 0.6 } });
-        alert("Coupon Redeemed! Screenshot this! 📸");
+        alert("Screenshot this coupon now! 📸");
     }
 }
 
-// --- ON LOAD EVENTS (Timer & No Button) ---
+// --- 2. ON LOAD EVENTS ---
 document.addEventListener('DOMContentLoaded', function() {
     
-    // Timer Logic
+    // Timer
     const timerElement = document.getElementById("timer");
     if (timerElement) {
-        const startDate = new Date("2023-10-13"); // OFFICIAL DATE
-        
+        const startDate = new Date("2023-10-13"); // Your Date
         setInterval(() => {
             const now = new Date();
             const diff = now - startDate;
-            
             const days = Math.floor(diff / (1000 * 60 * 60 * 24));
             const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
             const minutes = Math.floor((diff / 1000 / 60) % 60);
             const seconds = Math.floor((diff / 1000) % 60);
-            
             timerElement.innerText = `${days}d : ${hours}h : ${minutes}m : ${seconds}s`;
         }, 1000);
     }
 
-    // No Button Logic
+    // --- THE FIX FOR THE "NO" BUTTON ---
     const noBtn = document.getElementById("noBtn");
     if (noBtn) {
-        const noTexts = ["Are you sure?", "Don't do this!", "I'll cry...", "Wrong button!", "Click YES!"];
+        const noTexts = ["Are you sure?", "Really?", "Don't do it!", "Look here!", "Click YES!"];
         let textIndex = 0;
 
         function moveButton() {
-            const maxX = window.innerWidth - noBtn.offsetWidth - 50;
-            const maxY = window.innerHeight - noBtn.offsetHeight - 50;
+            // 1. Get Button Size
+            const btnWidth = noBtn.offsetWidth;
+            const btnHeight = noBtn.offsetHeight;
             
-            const randomX = Math.max(20, Math.floor(Math.random() * maxX));
-            const randomY = Math.max(20, Math.floor(Math.random() * maxY));
+            // 2. Get Window Size
+            const winWidth = window.innerWidth;
+            const winHeight = window.innerHeight;
 
-            noBtn.style.position = "fixed";
+            // 3. Define Safe Area (50px padding from all edges)
+            // Example: If window is 1000px, button is 100px.
+            // Max Left position = 1000 - 100 - 50 = 850px.
+            const maxLeft = winWidth - btnWidth - 50;
+            const maxTop = winHeight - btnHeight - 50;
+            const minPos = 50; // Don't touch top/left edges
+
+            // 4. Generate Random
+            const randomX = Math.floor(Math.random() * (maxLeft - minPos + 1)) + minPos;
+            const randomY = Math.floor(Math.random() * (maxTop - minPos + 1)) + minPos;
+
+            // 5. Apply Fixed Position
+            noBtn.style.position = "fixed"; // Break out of container
             noBtn.style.left = randomX + "px";
             noBtn.style.top = randomY + "px";
+            
+            // 6. Style Update
             noBtn.innerText = noTexts[textIndex];
             textIndex = (textIndex + 1) % noTexts.length;
         }
 
+        // Add both MouseOver (Desktop) and TouchStart (Mobile)
         noBtn.addEventListener("mouseover", moveButton);
-        noBtn.addEventListener("click", moveButton);
         noBtn.addEventListener("touchstart", (e) => { e.preventDefault(); moveButton(); });
+        noBtn.addEventListener("click", moveButton);
     }
 });
