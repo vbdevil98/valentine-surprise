@@ -1,27 +1,27 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&family=Dancing+Script:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&family=Dancing+Script:wght@700&display=swap');
 
+/* --- BASE STYLES --- */
 body {
     font-family: 'Nunito', sans-serif;
-    /* Soft Romantic Gradient */
-    background: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
+    background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%); /* Clean, premium look */
     margin: 0;
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow-x: hidden;
+    overflow: hidden; /* No scrolling allowed */
     text-align: center;
 }
 
-/* Moving Background Elements */
+/* Floating Hearts Background */
 body::before {
-    content: "❤️ 🎶 💖 💌 💘";
+    content: "❤️ 💌 💖 🌸 💘";
     position: fixed;
     top: 0; left: 0; width: 100%; height: 100%;
-    font-size: 3rem;
+    font-size: 2rem;
     opacity: 0.1;
     z-index: -1;
-    animation: floatBackground 30s linear infinite;
+    animation: floatBackground 20s linear infinite;
     pointer-events: none;
 }
 @keyframes floatBackground {
@@ -29,126 +29,158 @@ body::before {
     100% { transform: translateY(-100px) rotate(360deg); }
 }
 
-/* Glassmorphism Card */
-.container {
-    background: rgba(255, 255, 255, 0.85);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    padding: 3rem;
-    border-radius: 30px;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-    border: 2px solid rgba(255, 255, 255, 0.5);
-    width: 90%;
-    max-width: 500px;
+/* --- THE ENVELOPE (New!) --- */
+#envelope {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.8);
+    display: flex; justify-content: center; align-items: center;
+    z-index: 9999;
+}
+.envelope-wrapper {
+    background: #ff7675;
+    width: 300px; height: 200px;
+    display: flex; justify-content: center; align-items: center;
+    cursor: pointer;
     position: relative;
-    z-index: 10;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    transition: transform 0.3s;
+}
+.envelope-wrapper:hover { transform: scale(1.05); }
+.envelope-wrapper::after {
+    content: "Click to Open ❤️";
+    position: absolute; bottom: -40px; color: white; font-weight: bold;
+}
+.wax-seal {
+    width: 50px; height: 50px;
+    background: #d63031;
+    border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    border: 2px solid #fab1a0;
 }
 
+/* --- MAIN CARD (Glassmorphism) --- */
+.container {
+    display: none; /* Hidden until envelope opens */
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    padding: 2rem;
+    border-radius: 25px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+    border: 1px solid white;
+    width: 90%;
+    max-width: 450px; /* Default mobile width */
+    position: relative;
+    z-index: 10;
+    animation: popIn 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+@keyframes popIn {
+    0% { transform: scale(0); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* --- LAPTOP OPTIMIZATION (Media Query) --- */
+@media (min-width: 1024px) {
+    .container {
+        max-width: 900px; /* Much wider on laptop */
+        padding: 3rem;
+        display: grid !important; /* Use Grid for side-by-side */
+        grid-template-columns: 1fr 1fr; /* Two columns */
+        gap: 40px;
+        align-items: center;
+        text-align: left; /* Align text left on laptop */
+    }
+    
+    .gif-container {
+        order: 1;
+    }
+    
+    .text-content {
+        order: 2;
+    }
+    
+    .btn-container {
+        justify-content: flex-start; /* Align buttons left */
+    }
+
+    h1 { font-size: 3.5rem !important; }
+}
+
+/* Typography */
 h1 {
     font-family: 'Dancing Script', cursive;
     color: #e17055;
-    font-size: 3rem;
-    margin-bottom: 0.5rem;
-    text-shadow: 2px 2px 0px rgba(255,255,255,0.5);
+    font-size: 2.5rem;
+    margin: 0;
+    min-height: 60px; /* Space for typing effect */
 }
 
-p {
-    color: #636e72;
-    font-size: 1.2rem;
-    line-height: 1.6;
+/* Typing Cursor */
+.cursor {
+    display: inline-block;
+    width: 3px;
+    background-color: #e17055;
+    animation: blink 1s infinite;
+}
+@keyframes blink { 50% { opacity: 0; } }
+
+p { color: #636e72; font-size: 1.1rem; line-height: 1.6; }
+
+/* Timer */
+#timer {
+    background: #ffeaa7;
+    padding: 10px;
+    border-radius: 10px;
+    display: inline-block;
+    margin: 15px 0;
+    font-weight: bold;
+    color: #d63031;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
 /* Buttons */
 .btn-container {
-    margin-top: 30px;
+    margin-top: 25px;
     display: flex;
-    justify-content: center;
+    justify-content: center; /* Center on mobile */
     gap: 20px;
-    flex-wrap: wrap;
 }
 
 button {
     font-family: 'Nunito', sans-serif;
-    font-size: 1.1rem;
-    padding: 14px 30px;
+    font-size: 1.2rem;
+    padding: 12px 30px;
     border: none;
     border-radius: 50px;
     cursor: pointer;
-    transition: all 0.2s ease;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    font-weight: 800;
+    transition: all 0.3s ease;
+    font-weight: 700;
 }
 
-.yes-btn, .nav-btn {
+.yes-btn {
     background: linear-gradient(to right, #ff7675, #d63031);
     color: white;
+    box-shadow: 0 5px 15px rgba(214, 48, 49, 0.4);
 }
-.yes-btn:hover, .nav-btn:hover {
-    transform: translateY(-3px) scale(1.05);
-    box-shadow: 0 10px 20px rgba(214, 48, 49, 0.3);
-}
+.yes-btn:hover { transform: scale(1.1); box-shadow: 0 8px 20px rgba(214, 48, 49, 0.6); }
 
 #noBtn {
     background: #b2bec3;
-    color: #2d3436;
-    transition: transform 0.1s; /* Faster transition for jumping */
+    color: white;
+    position: relative;
+    z-index: 1000; /* Ensure it stays on top */
 }
 
-/* Music Player */
+/* Music Control */
 .music-control {
-    position: fixed; bottom: 25px; right: 25px;
-    background: white; width: 60px; height: 60px;
-    border-radius: 50%;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    position: fixed; bottom: 20px; right: 20px;
+    background: white; width: 50px; height: 50px;
+    border-radius: 50%; box-shadow: 0 5px 15px rgba(0,0,0,0.2);
     display: flex; justify-content: center; align-items: center;
-    cursor: pointer; z-index: 1000; font-size: 1.8rem;
-    border: 3px solid #ff7675;
-    transition: all 0.3s;
+    cursor: pointer; z-index: 2000; font-size: 1.5rem;
+    border: 2px solid #ff7675;
 }
-.music-control:hover { transform: scale(1.1); }
-.music-control.playing { animation: spin 4s linear infinite; border-color: #00b894; }
+.music-control.playing { animation: spin 4s linear infinite; }
 @keyframes spin { 100% { transform: rotate(360deg); } }
-
-/* Inputs */
-input[type="text"] {
-    width: 80%; padding: 15px;
-    border: 2px solid #dfe6e9; border-radius: 12px;
-    font-family: inherit; margin: 15px 0;
-    text-align: center; font-size: 1.2rem;
-    outline: none; transition: 0.3s;
-}
-input[type="text"]:focus { border-color: #ff7675; box-shadow: 0 0 10px rgba(255, 118, 117, 0.2); }
-
-/* List Styles */
-.list-group { list-style: none; padding: 0; text-align: left; }
-.list-group li {
-    background: #fff; margin: 10px 0; padding: 15px;
-    border-radius: 15px; border-left: 6px solid #ff7675;
-    font-size: 1.1rem; box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-}
-
-/* Gallery */
-.gallery { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; }
-.polaroid {
-    background: white; padding: 10px 10px 45px 10px;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-    transform: rotate(-2deg); transition: 0.3s;
-    width: 130px; border-radius: 4px;
-}
-.polaroid:hover { transform: scale(1.1) rotate(0deg); z-index: 50; }
-.polaroid img { width: 100%; border-radius: 4px; }
-.caption { margin-top: 10px; font-family: 'Dancing Script', cursive; font-size: 1.2rem; color: #636e72; }
-
-/* Coupon Grid */
-.coupon-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 20px; }
-.coupon {
-    border: 2px dashed #ff7675; background: #fff; padding: 15px;
-    border-radius: 10px; cursor: pointer; transition: 0.3s;
-}
-.coupon:hover { background: #ffeaa7; transform: translateY(-5px); }
-.coupon h3 { margin: 0; font-size: 1rem; color: #d63031; }
-.coupon p { margin: 5px 0 0 0; font-size: 0.8rem; color: #636e72; }
-
-/* Shake Animation */
-.shake-animation { animation: shake 0.5s; }
-@keyframes shake { 0% { transform: translateX(0); } 25% { transform: translateX(-10px); } 75% { transform: translateX(10px); } 100% { transform: translateX(0); } }
